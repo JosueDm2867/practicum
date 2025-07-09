@@ -2,8 +2,8 @@ frontend-sipeip/src/layouts
 frontend-sipeip/src/pages/*
 frontend-sipeip/src/App.js
 
-!frontend-sipeip/src/pages/roles/
-!frontend-sipeip/src/pages/roles/**
+!frontend-sipeip/src/pages/programa/
+!frontend-sipeip/src/pages/programa/**
 
 #  IDEs 
 .idea/
@@ -33,12 +33,12 @@ sipeip2/src/main/java/snp/sipeip/sipeip2/model/*
 
 
 # ¡Exceptuar explícitamente la carpeta Entidad!
-!sipeip2/src/main/java/snp/sipeip/sipeip2/controller/Rol/
-!sipeip2/src/main/java/snp/sipeip/sipeip2/repository/Rol/
-!sipeip2/src/main/java/snp/sipeip/sipeip2/service/Rol/
-!sipeip2/src/main/java/snp/sipeip/sipeip2/model/Rol/
+!sipeip2/src/main/java/snp/sipeip/sipeip2/controller/Programa/
+!sipeip2/src/main/java/snp/sipeip/sipeip2/repository/Programa/
+!sipeip2/src/main/java/snp/sipeip/sipeip2/service/Programa/
+!sipeip2/src/main/java/snp/sipeip/sipeip2/model/Programa/
 
-!sipeip2/src/main/java/snp/sipeip/sipeip2/controller/Rol/**
-!sipeip2/src/main/java/snp/sipeip/sipeip2/repository/Rol/**
-!sipeip2/src/main/java/snp/sipeip/sipeip2/service/Rol/**
-!sipeip2/src/main/java/snp/sipeip/sipeip2/model/Rol/**
+!sipeip2/src/main/java/snp/sipeip/sipeip2/controller/Programa/**
+!sipeip2/src/main/java/snp/sipeip/sipeip2/repository/Programa/**
+!sipeip2/src/main/java/snp/sipeip/sipeip2/service/Programa/**
+!sipeip2/src/main/java/snp/sipeip/sipeip2/model/Programa/**
