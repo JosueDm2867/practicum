@@ -1,4 +1,3 @@
-
 frontend-sipeip/src/layouts
 frontend-sipeip/src/pages
 frontend-sipeip/src/App.js
@@ -23,7 +22,19 @@ Thumbs.db
 *.local
 
 # MÓDULOS DEL BACKEND 
-sipeip2/src/main/java/snp/sipeip/sipeip2/controller/
-sipeip2/src/main/java/snp/sipeip/sipeip2/repository/
-sipeip2/src/main/java/snp/sipeip/sipeip2/service/
-sipeip2/src/main/java/snp/sipeip/sipeip2/model/
+sipeip2/src/main/java/snp/sipeip/sipeip2/controller/*
+sipeip2/src/main/java/snp/sipeip/sipeip2/repository/*
+sipeip2/src/main/java/snp/sipeip/sipeip2/service/*
+sipeip2/src/main/java/snp/sipeip/sipeip2/model/*
+
+
+# ¡Exceptuar explícitamente la carpeta Entidad!
+!sipeip2/src/main/java/snp/sipeip/sipeip2/controller/Entidad/
+!sipeip2/src/main/java/snp/sipeip/sipeip2/repository/Entidad/
+!sipeip2/src/main/java/snp/sipeip/sipeip2/service/Entidad/
+!sipeip2/src/main/java/snp/sipeip/sipeip2/model/Entidad/
+
+!sipeip2/src/main/java/snp/sipeip/sipeip2/controller/Entidad/**
+!sipeip2/src/main/java/snp/sipeip/sipeip2/repository/Entidad/**
+!sipeip2/src/main/java/snp/sipeip/sipeip2/service/Entidad/**
+!sipeip2/src/main/java/snp/sipeip/sipeip2/model/Entidad/**
