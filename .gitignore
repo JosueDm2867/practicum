@@ -1,29 +1,29 @@
-# === FRONTEND ===
-/frontend-sipeip/
-# o si tu carpeta se llama simplemente 'front'
-#/front/
 
-# === IDEs ===
+frontend-sipeip/src/components
+frontend-sipeip/src/layouts
+frontend-sipeip/src/pages
+frontend-sipeip/src/App.js
+#  IDEs 
 .idea/
 *.iml
 *.classpath
 *.project
 *.settings/
 
-# === SISTEMA ===
+# SISTEMA 
 .DS_Store
 Thumbs.db
 
-# === JAVA / SPRING BOOT ===
+# JAVA / SPRING BOOT 
 /target/
 *.log
 
-# === ARCHIVOS DE CONFIG. LOCALES ===
+# ARCHIVOS DE CONFIG. LOCALES 
 .env
 *.env
 *.local
 
-# === IGNORAR MÓDULOS DEL BACKEND ===
+# MÓDULOS DEL BACKEND 
 sipeip2/src/main/java/snp/sipeip/sipeip2/controller/
 sipeip2/src/main/java/snp/sipeip/sipeip2/repository/
 sipeip2/src/main/java/snp/sipeip/sipeip2/service/
