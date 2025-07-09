@@ -2,8 +2,8 @@ frontend-sipeip/src/layouts
 frontend-sipeip/src/pages/*
 frontend-sipeip/src/App.js
 
-!frontend-sipeip/src/pages/planInstitucional/
-!frontend-sipeip/src/pages/planInstitucional/**
+!frontend-sipeip/src/pages/UnidadOrganizacional/
+!frontend-sipeip/src/pages/UnidadOrganizacional/**
 
 #  IDEs 
 .idea/
@@ -33,12 +33,12 @@ sipeip2/src/main/java/snp/sipeip/sipeip2/model/*
 
 
 # ¡Exceptuar explícitamente la carpeta !
-!sipeip2/src/main/java/snp/sipeip/sipeip2/controller/Plan/
-!sipeip2/src/main/java/snp/sipeip/sipeip2/repository/Plan/
-!sipeip2/src/main/java/snp/sipeip/sipeip2/service/Plan/
-!sipeip2/src/main/java/snp/sipeip/sipeip2/model/Plan/
+!sipeip2/src/main/java/snp/sipeip/sipeip2/controller/UnidadOrganizacional/
+!sipeip2/src/main/java/snp/sipeip/sipeip2/repository/UnidadOrganizacional/
+!sipeip2/src/main/java/snp/sipeip/sipeip2/service/UnidadOrganizacional/
+!sipeip2/src/main/java/snp/sipeip/sipeip2/model/UnidadOrganizacional/
 
-!sipeip2/src/main/java/snp/sipeip/sipeip2/controller/Plan/**
-!sipeip2/src/main/java/snp/sipeip/sipeip2/repository/Plan/**
-!sipeip2/src/main/java/snp/sipeip/sipeip2/service/Plan/**
-!sipeip2/src/main/java/snp/sipeip/sipeip2/model/Plan/**
+!sipeip2/src/main/java/snp/sipeip/sipeip2/controller/UnidadOrganizacional/**
+!sipeip2/src/main/java/snp/sipeip/sipeip2/repository/UnidadOrganizacional/**
+!sipeip2/src/main/java/snp/sipeip/sipeip2/service/UnidadOrganizacional/**
+!sipeip2/src/main/java/snp/sipeip/sipeip2/model/UnidadOrganizacional/**
