@@ -1,6 +1,13 @@
 frontend-sipeip/src/layouts
-frontend-sipeip/src/pages
+frontend-sipeip/src/pages/*
 frontend-sipeip/src/App.js
+
+!frontend-sipeip/src/pages/entidades/
+!frontend-sipeip/src/pages/usuarios/
+!frontend-sipeip/src/pages/entidades/**
+!frontend-sipeip/src/pages/usuarios/**
+ */
+
 #  IDEs 
 .idea/
 *.iml
@@ -29,12 +36,12 @@ sipeip2/src/main/java/snp/sipeip/sipeip2/model/*
 
 
 # ¡Exceptuar explícitamente la carpeta Entidad!
-!sipeip2/src/main/java/snp/sipeip/sipeip2/controller/Entidad/
-!sipeip2/src/main/java/snp/sipeip/sipeip2/repository/Entidad/
-!sipeip2/src/main/java/snp/sipeip/sipeip2/service/Entidad/
-!sipeip2/src/main/java/snp/sipeip/sipeip2/model/Entidad/
+!sipeip2/src/main/java/snp/sipeip/sipeip2/controller/Usuario/
+!sipeip2/src/main/java/snp/sipeip/sipeip2/repository/Usuario/
+!sipeip2/src/main/java/snp/sipeip/sipeip2/service/Usuario/
+!sipeip2/src/main/java/snp/sipeip/sipeip2/model/Usuario/
 
-!sipeip2/src/main/java/snp/sipeip/sipeip2/controller/Entidad/**
-!sipeip2/src/main/java/snp/sipeip/sipeip2/repository/Entidad/**
-!sipeip2/src/main/java/snp/sipeip/sipeip2/service/Entidad/**
-!sipeip2/src/main/java/snp/sipeip/sipeip2/model/Entidad/**
+!sipeip2/src/main/java/snp/sipeip/sipeip2/controller/Usuario/**
+!sipeip2/src/main/java/snp/sipeip/sipeip2/repository/Usuario/**
+!sipeip2/src/main/java/snp/sipeip/sipeip2/service/Usuario/**
+!sipeip2/src/main/java/snp/sipeip/sipeip2/model/Usuario/**
