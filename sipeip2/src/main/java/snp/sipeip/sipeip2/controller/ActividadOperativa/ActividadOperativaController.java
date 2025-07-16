@@ -1,7 +1,7 @@
 package snp.sipeip.sipeip2.controller.ActividadOperativa;
 
-
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import snp.sipeip.sipeip2.model.ActividadOperativa.ActividadOperativa;
 import snp.sipeip.sipeip2.service.ActividadOperativa.ActividadOperativaService;
@@ -9,36 +9,37 @@ import snp.sipeip.sipeip2.service.ActividadOperativa.ActividadOperativaService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/actividades")
-@CrossOrigin(origins = "*")
+@RequestMapping("/api/actividades-operativas")
+@RequiredArgsConstructor
 public class ActividadOperativaController {
 
-    @Autowired
-    private ActividadOperativaService service;
+    private final ActividadOperativaService service;
+
+    @PostMapping
+    public ResponseEntity<ActividadOperativa> guardar(@RequestBody ActividadOperativa actividad) {
+        return ResponseEntity.ok(service.guardar(actividad));
+    }
 
     @GetMapping
-    public List<ActividadOperativa> listarTodos() {
-        return service.listarTodos();
+    public ResponseEntity<List<ActividadOperativa>> listar() {
+        return ResponseEntity.ok(service.listar());
     }
 
     @GetMapping("/{id}")
-    public ActividadOperativa obtenerPorId(@PathVariable Long id) {
-        return service.obtenerPorId(id);
-    }
-
-    @PostMapping
-    public ActividadOperativa crear(@RequestBody ActividadOperativa actividad) {
-        return service.guardar(actividad);
+    public ResponseEntity<ActividadOperativa> obtenerPorId(@PathVariable Long id) {
+        return service.obtenerPorId(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @PutMapping("/{id}")
-    public ActividadOperativa actualizar(@PathVariable Long id, @RequestBody ActividadOperativa actividad) {
-        actividad.setIdActividad(id);
-        return service.guardar(actividad);
+    public ResponseEntity<ActividadOperativa> actualizar(@PathVariable Long id, @RequestBody ActividadOperativa actividad) {
+        return ResponseEntity.ok(service.actualizar(id, actividad));
     }
 
     @DeleteMapping("/{id}")
-    public void eliminar(@PathVariable Long id) {
+    public ResponseEntity<Void> eliminar(@PathVariable Long id) {
         service.eliminar(id);
+        return ResponseEntity.noContent().build();
     }
 }

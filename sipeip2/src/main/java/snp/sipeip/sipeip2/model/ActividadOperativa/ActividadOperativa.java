@@ -1,6 +1,5 @@
 package snp.sipeip.sipeip2.model.ActividadOperativa;
 
-
 import jakarta.persistence.*;
 import lombok.*;
 import snp.sipeip.sipeip2.model.Meta.Meta;

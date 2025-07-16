@@ -5,13 +5,14 @@ import { useNavigate, useParams } from "react-router-dom";
 const FormMeta = () => {
   const [meta, setMeta] = useState({
     descripcion: "",
+    estado: 1,
     unidadMedida: "",
     valorInicial: "",
     valorObjetivo: "",
-    estado: 1,
-    plan: { idPlan: "" },
+    planInstitucional: { idPlanInstitucional: "" },
     proyecto: { idProyecto: "" }
   });
+
   const [planes, setPlanes] = useState([]);
   const [proyectos, setProyectos] = useState([]);
 
@@ -21,26 +22,30 @@ const FormMeta = () => {
   useEffect(() => {
     axios.get("http://localhost:8080/api/planes").then(res => setPlanes(res.data));
     axios.get("http://localhost:8080/api/proyectos").then(res => setProyectos(res.data));
+
     if (id) {
-      axios.get(`http://localhost:8080/api/metas/${id}`).then(res => setMeta(res.data));
+      axios.get(`http://localhost:8080/api/metas/${id}`)
+        .then(res => setMeta(res.data))
+        .catch(err => console.error("Error al cargar meta", err));
     }
   }, [id]);
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     const { name, value } = e.target;
-    if (name === "idPlan") {
-      setMeta({ ...meta, plan: { idPlan: parseInt(value) } });
-    } else if (name === "idProyecto") {
+    if (name === "planInstitucional") {
+      setMeta({ ...meta, planInstitucional: { idPlanInstitucional: parseInt(value) } });
+    } else if (name === "proyecto") {
       setMeta({ ...meta, proyecto: { idProyecto: parseInt(value) } });
     } else {
       setMeta({ ...meta, [name]: value });
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    const method = id ? axios.put : axios.post;
     const url = id ? `http://localhost:8080/api/metas/${id}` : "http://localhost:8080/api/metas";
+    const method = id ? axios.put : axios.post;
+
     try {
       await method(url, meta);
       navigate("/metas");
@@ -50,26 +55,31 @@ const FormMeta = () => {
   };
 
   return (
-    <div className="container mx-auto p-4 max-w-lg">
-      <h1 className="text-xl font-bold mb-4">{id ? "Editar Meta" : "Nueva Meta"}</h1>
+    <div className="p-4 max-w-lg mx-auto">
+      <h1 className="text-xl font-bold mb-4">{id ? "Editar" : "Nueva"} Meta</h1>
       <form onSubmit={handleSubmit} className="space-y-4">
-        <input type="text" name="descripcion" value={meta.descripcion} onChange={handleChange} placeholder="Descripción" required className="w-full border p-2" />
-        <input type="text" name="unidadMedida" value={meta.unidadMedida} onChange={handleChange} placeholder="Unidad de Medida" className="w-full border p-2" />
-        <input type="text" name="valorInicial" value={meta.valorInicial} onChange={handleChange} placeholder="Valor Inicial" className="w-full border p-2" />
-        <input type="text" name="valorObjetivo" value={meta.valorObjetivo} onChange={handleChange} placeholder="Valor Objetivo" className="w-full border p-2" />
-        
-        <select name="idPlan" value={meta.plan?.idPlan || ""} onChange={handleChange} required className="w-full border p-2">
-          <option value="">Seleccione un plan</option>
-          {planes.map(p => (
-            <option key={p.idPlan} value={p.idPlan}>{p.nombrePlan}</option>
+        <input type="text" name="descripcion" placeholder="Descripción" value={meta.descripcion} onChange={handleChange} className="w-full border p-2" />
+        <input type="text" name="unidadMedida" placeholder="Unidad de medida" value={meta.unidadMedida} onChange={handleChange} className="w-full border p-2" />
+        <input type="text" name="valorInicial" placeholder="Valor inicial" value={meta.valorInicial} onChange={handleChange} className="w-full border p-2" />
+        <input type="text" name="valorObjetivo" placeholder="Valor objetivo" value={meta.valorObjetivo} onChange={handleChange} className="w-full border p-2" />
+
+        <select name="planInstitucional" value={meta.planInstitucional.idPlanInstitucional || ""} onChange={handleChange} className="w-full border p-2">
+          <option value="">Selecciona un Plan Institucional</option>
+          {planes.map(plan => (
+            <option key={plan.idPlanInstitucional} value={plan.idPlanInstitucional}>{plan.nombrePlan}</option>
           ))}
         </select>
 
-        <select name="idProyecto" value={meta.proyecto?.idProyecto || ""} onChange={handleChange} required className="w-full border p-2">
-          <option value="">Seleccione un proyecto</option>
+        <select name="proyecto" value={meta.proyecto.idProyecto || ""} onChange={handleChange} className="w-full border p-2">
+          <option value="">Selecciona un Proyecto</option>
           {proyectos.map(proy => (
-            <option key={proy.idProyecto} value={proy.idProyecto}>{proy.nombreProyecto}</option>
+            <option key={proy.idProyecto} value={proy.idProyecto}>{proy.nombre}</option>
           ))}
+        </select>
+
+        <select name="estado" value={meta.estado} onChange={handleChange} className="w-full border p-2">
+          <option value={1}>Activo</option>
+          <option value={0}>Inactivo</option>
         </select>
 
         <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded">

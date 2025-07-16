@@ -1,83 +1,74 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const FormRol = () => {
-  const [rol, setRol] = useState({
-    nombre: "",
-    descripcion: "",
-    estado: "ACTIVO",
-  });
-
-  const navigate = useNavigate();
-  const { id } = useParams();
+const ListaRoles = () => {
+  const [roles, setRoles] = useState([]);
 
   useEffect(() => {
-    if (id) {
-      axios
-        .get(`http://localhost:8080/api/roles/${id}`)
-        .then((res) => setRol(res.data))
-        .catch((err) => console.error("Error al obtener rol", err));
-    }
-  }, [id]);
+    axios
+      .get("http://localhost:8080/api/roles")
+      .then((res) => setRoles(res.data))
+      .catch((err) => console.error("Error al obtener roles", err));
+  }, []);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setRol({ ...rol, [name]: value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      if (id) {
-        await axios.put(`http://localhost:8080/api/roles/${id}`, rol);
-      } else {
-        await axios.post("http://localhost:8080/api/roles", rol);
+  const handleEliminar = async (id) => {
+    if (window.confirm("¿Deseas eliminar este rol?")) {
+      try {
+        await axios.delete(`http://localhost:8080/api/roles/${id}`);
+        setRoles(roles.filter((r) => r.id !== id));
+      } catch (err) {
+        console.error("Error al eliminar rol", err);
       }
-      navigate("/roles");
-    } catch (err) {
-      console.error("Error al guardar rol", err);
     }
   };
 
   return (
-    <div className="container mx-auto p-4 max-w-lg">
-      <h1 className="text-xl font-bold mb-4">{id ? "Editar Rol" : "Nuevo Rol"}</h1>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <input
-          type="text"
-          name="nombre"
-          value={rol.nombre}
-          onChange={handleChange}
-          placeholder="Nombre del rol"
-          required
-          className="w-full border p-2"
-        />
+    <div className="container mx-auto p-4">
+      <h1 className="text-2xl font-bold mb-4">Gestión de Roles</h1>
 
-        <textarea
-          name="descripcion"
-          value={rol.descripcion}
-          onChange={handleChange}
-          placeholder="Descripción del rol"
-          className="w-full border p-2"
-        />
+      <Link
+        to="/roles/nuevo"
+        className="bg-green-600 text-white px-4 py-2 rounded mb-4 inline-block"
+      >
+        Crear nuevo rol
+      </Link>
 
-        <select
-          name="estado"
-          value={rol.estado}
-          onChange={handleChange}
-          className="w-full border p-2"
-        >
-          <option value="ACTIVO">ACTIVO</option>
-          <option value="INACTIVO">INACTIVO</option>
-        </select>
-
-        <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded">
-          {id ? "Actualizar" : "Guardar"}
-        </button>
-      </form>
+      <table className="table-auto w-full border text-sm">
+        <thead>
+          <tr>
+            <th className="border px-4 py-2">Nombre</th>
+            <th className="border px-4 py-2">Descripción</th>
+            <th className="border px-4 py-2">Estado</th>
+            <th className="border px-4 py-2">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {roles.map((rol) => (
+            <tr key={rol.id}>
+              <td className="border px-4 py-2">{rol.nombre}</td>
+              <td className="border px-4 py-2">{rol.descripcion}</td>
+              <td className="border px-4 py-2">{rol.estado}</td>
+              <td className="border px-4 py-2">
+                <Link
+                  to={`/roles/editar/${rol.idRol}`}
+                  className="bg-blue-500 text-white px-2 py-1 rounded mr-2"
+                >
+                  Editar
+                </Link>
+                <button
+                  onClick={() => handleEliminar(rol.idRol)}
+                  className="bg-red-500 text-white px-2 py-1 rounded"
+                >
+                  Eliminar
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
 
-export default FormRol;
+export default ListaRoles;

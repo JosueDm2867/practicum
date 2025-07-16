@@ -6,8 +6,9 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ProyectoInversionService {
+    ProyectoInversion guardar(ProyectoInversion proyecto);
     List<ProyectoInversion> listar();
     Optional<ProyectoInversion> obtenerPorId(Long id);
-    ProyectoInversion guardar(ProyectoInversion proyecto);
+    ProyectoInversion actualizar(Long id, ProyectoInversion proyecto);
     void eliminar(Long id);
 }

@@ -1,6 +1,5 @@
 package snp.sipeip.sipeip2.service.Meta;
 
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import snp.sipeip.sipeip2.model.Meta.Meta;
@@ -13,31 +12,31 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class MetaServiceImpl implements MetaService {
 
-    private final MetaRepository metaRepository;
+    private final MetaRepository repository;
 
     @Override
     public Meta guardar(Meta meta) {
-        return metaRepository.save(meta);
+        return repository.save(meta);
     }
 
     @Override
     public List<Meta> listar() {
-        return metaRepository.findAll();
+        return repository.findAll();
     }
 
     @Override
     public Optional<Meta> obtenerPorId(Long id) {
-        return metaRepository.findById(id);
+        return repository.findById(id);
     }
 
     @Override
     public Meta actualizar(Long id, Meta meta) {
         meta.setIdMeta(id);
-        return metaRepository.save(meta);
+        return repository.save(meta);
     }
 
     @Override
     public void eliminar(Long id) {
-        metaRepository.deleteById(id);
+        repository.deleteById(id);
     }
 }

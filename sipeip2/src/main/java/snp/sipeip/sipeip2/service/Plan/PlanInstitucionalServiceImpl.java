@@ -1,7 +1,6 @@
 package snp.sipeip.sipeip2.service.Plan;
 
-
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import snp.sipeip.sipeip2.model.Plan.PlanInstitucional;
 import snp.sipeip.sipeip2.repository.Plan.PlanInstitucionalRepository;
@@ -10,15 +9,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class PlanInstitucionalServiceImpl implements PlanInstitucionalService {
 
-    @Autowired
-    private PlanInstitucionalRepository repository;
-
-    @Override
-    public List<PlanInstitucional> listar() {
-        return repository.findAll();
-    }
+    private final PlanInstitucionalRepository repository;
 
     @Override
     public PlanInstitucional guardar(PlanInstitucional plan) {
@@ -26,9 +20,19 @@ public class PlanInstitucionalServiceImpl implements PlanInstitucionalService {
     }
 
     @Override
-    public PlanInstitucional obtenerPorId(Long id) {
-        Optional<PlanInstitucional> plan = repository.findById(id);
-        return plan.orElse(null);
+    public List<PlanInstitucional> listar() {
+        return repository.findAll();
+    }
+
+    @Override
+    public Optional<PlanInstitucional> obtenerPorId(Long id) {
+        return repository.findById(id);
+    }
+
+    @Override
+    public PlanInstitucional actualizar(Long id, PlanInstitucional plan) {
+        plan.setIdPlanInstitucional(id);
+        return repository.save(plan);
     }
 
     @Override

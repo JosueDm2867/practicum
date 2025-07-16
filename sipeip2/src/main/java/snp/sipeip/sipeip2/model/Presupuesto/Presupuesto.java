@@ -7,6 +7,7 @@ import snp.sipeip.sipeip2.model.Proyecto.ProyectoInversion;
 import snp.sipeip.sipeip2.model.UnidadOrganizacional.UnidadOrganizacional;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
@@ -21,8 +22,22 @@ public class Presupuesto {
 
     private Integer monto;
 
-    private LocalDate periodo;
+    private String descripcion;
 
+    private LocalDateTime fechaCreacion;
+
+    private LocalDateTime fechaActualizacion;
+
+    @PrePersist
+    public void prePersist() {
+        this.fechaCreacion = LocalDateTime.now();
+        this.fechaActualizacion = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    public void preUpdate() {
+        this.fechaActualizacion = LocalDateTime.now();
+    }
     @ManyToOne
     @JoinColumn(name = "id_proyecto")
     private ProyectoInversion proyecto;

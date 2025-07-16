@@ -7,7 +7,7 @@ import FormEntidad from "../pages/entidades/FormEntidad";
 import ListaUsuarios from "../pages/usuarios/ListaUsuarios";
 import FormUsuario from "../pages/usuarios/FormUsuario";
 import FormRol from "../pages/roles/FormRol";
-import ListaRoles from "../pages/roles/ListaRoles";
+import ListaRoles from "../pages/roles/ListaRoles"
 import ListaUnidades from "../pages/UnidadOrganizacional/ListaUnidades";
 import FormUnidad from "../pages/UnidadOrganizacional/FormUnidad";
 import ListaProyectos from "../pages/proyectos/ListaProyectos";
@@ -54,7 +54,7 @@ const AppRouter = () => {
           <Route path="/planes/nuevo" element={<FormPlan />} />
           <Route path="/planes/editar/:id" element={<FormPlan />} />
           <Route path="/metas" element={<ListaMetas />} />
-          <Route path="/metas/nuevo" element={<FormMeta />} />
+          <Route path="/metas/nueva" element={<FormMeta />} />
           <Route path="/metas/editar/:id" element={<FormMeta />} />
           <Route path="/programas" element={<ListaProgramas />} />
           <Route path="/programas/nuevo" element={<FormPrograma />} />

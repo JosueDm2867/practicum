@@ -12,7 +12,6 @@ const Sidebar = () => {
       <h2 className="text-xl font-bold mb-6">Menú</h2>
       <nav className="space-y-4">
 
-        {/* Gestión Institucional */}
         <div>
           <button
             onClick={() => setOpenInstitucional(!openInstitucional)}
@@ -28,7 +27,6 @@ const Sidebar = () => {
           )}
         </div>
 
-        {/* Gestión de Acceso */}
         <div>
           <button
             onClick={() => setOpenAcceso(!openAcceso)}
@@ -44,7 +42,6 @@ const Sidebar = () => {
           )}
         </div>
 
-        {/* Planificación Estratégica */}
         <div>
           <button
             onClick={() => setOpenEstrategica(!openEstrategica)}
@@ -54,16 +51,13 @@ const Sidebar = () => {
           </button>
           {openEstrategica && (
             <div className="pl-4 mt-2 space-y-2">
-              <Link to="/plan-institucional" className="block hover:bg-gray-700 p-2 rounded">Plan Institucional</Link>
-              <Link to="/objetivos-pnd" className="block hover:bg-gray-700 p-2 rounded">Objetivos PND</Link>
-              <Link to="/objetivos-ods" className="block hover:bg-gray-700 p-2 rounded">Objetivos ODS</Link>
-              <Link to="/objetivos-estrategicos" className="block hover:bg-gray-700 p-2 rounded">Objetivos Estratégicos</Link>
+              <Link to="/planes" className="block hover:bg-gray-700 p-2 rounded">Plan Institucional</Link>
+              <Link to="/objetivos" className="block hover:bg-gray-700 p-2 rounded">Objetivos Estratégicos</Link>
               <Link to="/metas" className="block hover:bg-gray-700 p-2 rounded">Metas</Link>
             </div>
           )}
         </div>
 
-        {/* Proyectos y Presupuesto */}
         <div>
           <button
             onClick={() => setOpenProyectos(!openProyectos)}
@@ -74,8 +68,8 @@ const Sidebar = () => {
           {openProyectos && (
             <div className="pl-4 mt-2 space-y-2">
               <Link to="/programas" className="block hover:bg-gray-700 p-2 rounded">Programas</Link>
-              <Link to="/actividades-operativas" className="block hover:bg-gray-700 p-2 rounded">Actividades Operativas</Link>
-              <Link to="/proyectos-inversion" className="block hover:bg-gray-700 p-2 rounded">Proyectos de Inversión</Link>
+              <Link to="/actividades" className="block hover:bg-gray-700 p-2 rounded">Actividades Operativas</Link>
+              <Link to="/proyectos" className="block hover:bg-gray-700 p-2 rounded">Proyectos de Inversión</Link>
               <Link to="/presupuesto" className="block hover:bg-gray-700 p-2 rounded">Presupuesto</Link>
             </div>
           )}

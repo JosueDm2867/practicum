@@ -22,6 +22,11 @@ import ListaPresupuesto from "./pages/presupuesto/ListaPresupuesto.jsx";
 import FormPresupuesto from "./pages/presupuesto/FormPresupuesto.jsx";  
 import ListaProyectos from "./pages/proyectos/ListaProyectos.jsx";  
 import FormProyecto from "./pages/proyectos/FormProyecto.jsx";
+import VistaObjetivos from "./pages/objetivos/VistaObjetivos.jsx";
+import ListaActividadOperativa from "./pages/actividadOperativa/ListaActividadOperativa.jsx";
+import FormActividadOperativa from "./pages/actividadOperativa/FormActividadOperativa.jsx";
+import FormObjetivoEstrategico from "./pages/objetivos/FormObjetivoEstrategico.jsx";
+
 function App() {
   return (
     <Router>
@@ -44,6 +49,8 @@ function App() {
           <Route path="/objetivos/pnd/editar/:id" element={<FormObjetivoPND />} />
           <Route path="/objetivos/ods/nuevo" element={<FormObjetivoODS />} />
           <Route path="/objetivos/ods/editar/:id" element={<FormObjetivoODS />} />
+          <Route path="/objetivos/estrategicos/nuevo" element={<FormObjetivoEstrategico />} />
+          <Route path="/objetivos/estrategicos/editar/:id" element={<FormObjetivoEstrategico />} />
           <Route path="/planes" element={<ListaPlanes />} />
           <Route path="/planes/nuevo" element={<FormPlan />} />
           <Route path="/planes/editar/:id" element={<FormPlan />} />
@@ -59,6 +66,11 @@ function App() {
           <Route path="/proyectos" element={<ListaProyectos />} />
           <Route path="/proyectos/nuevo" element={<FormProyecto />} />
           <Route path="/proyectos/editar/:id" element={<FormProyecto />} />
+          <Route path="/objetivos" element={<VistaObjetivos />} />
+          <Route path="/actividades" element={<ListaActividadOperativa />} />
+          <Route path="/actividades/nueva" element={<FormActividadOperativa />} />
+          <Route path="/actividades/editar/:id" element={<FormActividadOperativa />} />
+
         </Route>
       </Routes>
     </Router>

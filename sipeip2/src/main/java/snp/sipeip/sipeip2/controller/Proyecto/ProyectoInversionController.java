@@ -1,6 +1,7 @@
 package snp.sipeip.sipeip2.controller.Proyecto;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import snp.sipeip.sipeip2.model.Proyecto.ProyectoInversion;
 import snp.sipeip.sipeip2.service.Proyecto.ProyectoInversionService;
@@ -9,35 +10,36 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/proyectos")
-@CrossOrigin(origins = "*")
+@RequiredArgsConstructor
 public class ProyectoInversionController {
 
-    @Autowired
-    private ProyectoInversionService service;
+    private final ProyectoInversionService proyectoService;
+
+    @PostMapping
+    public ResponseEntity<ProyectoInversion> guardar(@RequestBody ProyectoInversion proyecto) {
+        return ResponseEntity.ok(proyectoService.guardar(proyecto));
+    }
 
     @GetMapping
-    public List<ProyectoInversion> listar() {
-        return service.listar();
+    public ResponseEntity<List<ProyectoInversion>> listar() {
+        return ResponseEntity.ok(proyectoService.listar());
     }
 
     @GetMapping("/{id}")
-    public ProyectoInversion obtener(@PathVariable Long id) {
-        return service.obtenerPorId(id).orElse(null);
-    }
-
-    @PostMapping
-    public ProyectoInversion guardar(@RequestBody ProyectoInversion proyecto) {
-        return service.guardar(proyecto);
+    public ResponseEntity<ProyectoInversion> obtenerPorId(@PathVariable Long id) {
+        return proyectoService.obtenerPorId(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @PutMapping("/{id}")
-    public ProyectoInversion actualizar(@PathVariable Long id, @RequestBody ProyectoInversion proyecto) {
-        proyecto.setIdProyecto(id);
-        return service.guardar(proyecto);
+    public ResponseEntity<ProyectoInversion> actualizar(@PathVariable Long id, @RequestBody ProyectoInversion proyecto) {
+        return ResponseEntity.ok(proyectoService.actualizar(id, proyecto));
     }
 
     @DeleteMapping("/{id}")
-    public void eliminar(@PathVariable Long id) {
-        service.eliminar(id);
+    public ResponseEntity<Void> eliminar(@PathVariable Long id) {
+        proyectoService.eliminar(id);
+        return ResponseEntity.noContent().build();
     }
 }

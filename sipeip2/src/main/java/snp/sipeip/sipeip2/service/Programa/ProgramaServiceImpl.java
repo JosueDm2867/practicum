@@ -1,7 +1,6 @@
 package snp.sipeip.sipeip2.service.Programa;
 
-
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import snp.sipeip.sipeip2.model.Programa.Programa;
 import snp.sipeip.sipeip2.repository.Programa.ProgramaRepository;
@@ -10,13 +9,18 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class ProgramaServiceImpl implements ProgramaService {
 
-    @Autowired
-    private ProgramaRepository programaRepository;
+    private final ProgramaRepository programaRepository;
 
     @Override
-    public List<Programa> listarTodos() {
+    public Programa guardar(Programa programa) {
+        return programaRepository.save(programa);
+    }
+
+    @Override
+    public List<Programa> listar() {
         return programaRepository.findAll();
     }
 
@@ -26,7 +30,8 @@ public class ProgramaServiceImpl implements ProgramaService {
     }
 
     @Override
-    public Programa guardar(Programa programa) {
+    public Programa actualizar(Long id, Programa programa) {
+        programa.setIdPrograma(id);
         return programaRepository.save(programa);
     }
 

@@ -1,23 +1,18 @@
 package snp.sipeip.sipeip2.service.ActividadOperativa;
 
-
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import snp.sipeip.sipeip2.model.ActividadOperativa.ActividadOperativa;
 import snp.sipeip.sipeip2.repository.ActividadOperativa.ActividadOperativaRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class ActividadOperativaServiceImpl implements ActividadOperativaService {
 
-    @Autowired
-    private ActividadOperativaRepository repository;
-
-    @Override
-    public List<ActividadOperativa> listarTodos() {
-        return repository.findAll();
-    }
+    private final ActividadOperativaRepository repository;
 
     @Override
     public ActividadOperativa guardar(ActividadOperativa actividad) {
@@ -25,8 +20,19 @@ public class ActividadOperativaServiceImpl implements ActividadOperativaService 
     }
 
     @Override
-    public ActividadOperativa obtenerPorId(Long id) {
-        return repository.findById(id).orElse(null);
+    public List<ActividadOperativa> listar() {
+        return repository.findAll();
+    }
+
+    @Override
+    public Optional<ActividadOperativa> obtenerPorId(Long id) {
+        return repository.findById(id);
+    }
+
+    @Override
+    public ActividadOperativa actualizar(Long id, ActividadOperativa actividad) {
+        actividad.setIdActividad(id);
+        return repository.save(actividad);
     }
 
     @Override
