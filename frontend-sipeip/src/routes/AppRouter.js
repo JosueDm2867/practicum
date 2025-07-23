@@ -28,12 +28,14 @@ import ListaODS from "../pages/objetivos/ListaODS";
 import FormODS from "../pages/objetivos/FormODS";
 import ListaObjetivosEstrategicos from "../pages/objetivos/ListaObjetivosEstrategicos";
 import FormObjetivoEstrategico from "../pages/objetivos/FormObjetivoEstrategico";
+import Login from "../components/Login";
 
 const AppRouter = () => {
   return (
     <Router>
       <DashboardLayout>
         <Routes>
+          <Route path="/login" element={<Login />} />
           <Route path="/" element={<Home />} />
           <Route path="/entidades" element={<ListaEntidades />} />
           <Route path="/entidades/nueva" element={<FormEntidad />} />

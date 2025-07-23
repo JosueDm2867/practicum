@@ -1,14 +1,20 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
-import { Outlet } from "react-router-dom";
+import { Outlet, Navigate } from "react-router-dom";
+import { AuthContext } from "../components/AuthProvider";
 
 const DashboardLayout = () => {
+  const { usuario } = useContext(AuthContext);
   const [isSidebarOpen, setSidebarOpen] = useState(true);
 
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
   };
+
+  if (!usuario) {
+    return <Navigate to="/login" />;
+  }
 
   return (
     <div className="flex h-screen overflow-hidden">

@@ -5,6 +5,7 @@ import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import snp.sipeip.sipeip2.model.Rol.Rol;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.time.LocalDateTime;
@@ -18,7 +19,6 @@ import java.util.Collections;
 @AllArgsConstructor
 @Builder
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-
 public class Usuario implements UserDetails {
 
     @Id
@@ -38,14 +38,13 @@ public class Usuario implements UserDetails {
     private String password;
 
     private String estado;
-
     private LocalDateTime fechaCreacion;
     private LocalDateTime fechaActualizacion;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_rol", nullable = false)
     private Rol rol;
-
+    
     @PrePersist
     public void prePersist() {
         this.fechaCreacion = LocalDateTime.now();
@@ -57,33 +56,38 @@ public class Usuario implements UserDetails {
         this.fechaActualizacion = LocalDateTime.now();
     }
 
-    // Implementación de UserDetails
     @Override
+    @JsonIgnore
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton(() -> rol.getNombre()); // usa el nombre del rol como autoridad
+        return Collections.singleton(() -> "ROLE_" + rol.getNombre().toUpperCase());
     }
 
     @Override
+    @JsonIgnore
     public String getUsername() {
-        return correo; // usamos correo como username
+        return correo; 
     }
 
     @Override
+    @JsonIgnore
     public boolean isAccountNonExpired() {
-        return true; // puedes agregar lógica según estado
+        return true; 
     }
 
     @Override
+    @JsonIgnore
     public boolean isAccountNonLocked() {
-        return true; // o lógica personalizada
+        return true;
     }
 
     @Override
+    @JsonIgnore
     public boolean isCredentialsNonExpired() {
         return true;
     }
 
     @Override
+    @JsonIgnore
     public boolean isEnabled() {
         return estado != null && estado.equalsIgnoreCase("activo");
     }

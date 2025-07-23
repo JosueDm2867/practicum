@@ -13,6 +13,7 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/usuarios")
+
 public class UsuarioController {
 
     @Autowired
@@ -45,6 +46,20 @@ public class UsuarioController {
     public void eliminar(@PathVariable Long id) {
         usuarioService.eliminar(id);
     }
+
+    @PutMapping("/{id}")
+public Usuario actualizar(@PathVariable Long id, @RequestBody Usuario usuarioActualizado) {
+    Usuario existente = usuarioService.buscarPorId(id);
+    if (existente != null) {
+        usuarioActualizado.setId(id);
+        usuarioActualizado.setFechaCreacion(existente.getFechaCreacion());
+        usuarioActualizado.setFechaActualizacion(LocalDateTime.now());
+        return usuarioService.guardar(usuarioActualizado);
+    } else {
+        throw new RuntimeException("Usuario no encontrado");
+    }
+}
+
 
 
 }

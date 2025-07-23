@@ -22,7 +22,7 @@ public class UnidadOrganizacional {
     private String responsable;
     private String telefonoInterno;
     private String correo;
-    private String estado; // Puedes usar boolean o Enum según prefieras
+    private String estado; 
 
     private LocalDateTime fechaCreacion;
     private LocalDateTime fechaActualizacion;
