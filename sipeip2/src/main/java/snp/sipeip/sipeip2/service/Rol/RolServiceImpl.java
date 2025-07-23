@@ -1,7 +1,6 @@
 package snp.sipeip.sipeip2.service.Rol;
 
-
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import snp.sipeip.sipeip2.model.Rol.Rol;
 import snp.sipeip.sipeip2.repository.Rol.RolRepository;
@@ -9,10 +8,10 @@ import snp.sipeip.sipeip2.repository.Rol.RolRepository;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class RolServiceImpl implements RolService {
 
-    @Autowired
-    private RolRepository repository;
+    private final RolRepository repository;
 
     @Override
     public List<Rol> listarTodos() {

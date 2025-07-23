@@ -3,6 +3,8 @@ package snp.sipeip.sipeip2.controller.Proyecto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+// import snp.sipeip.sipeip2.dto.ReporteProyectoDTO;
 import snp.sipeip.sipeip2.model.Proyecto.ProyectoInversion;
 import snp.sipeip.sipeip2.service.Proyecto.ProyectoInversionService;
 
@@ -42,4 +44,14 @@ public class ProyectoInversionController {
         proyectoService.eliminar(id);
         return ResponseEntity.noContent().build();
     }
+
+    // @GetMapping("/reporte")
+    // public ResponseEntity<List<ReporteProyectoDTO>> reporteProyectos(
+    //         @RequestParam(required = false) Long entidadId,
+    //         @RequestParam(required = false) String estado,
+    //         @RequestParam(required = false) Long responsableId
+    // ) {
+    //     List<ReporteProyectoDTO> reporte = proyectoService.obtenerReporteProyectos(entidadId, estado, responsableId);
+    //     return ResponseEntity.ok(reporte);
+    // }
 }

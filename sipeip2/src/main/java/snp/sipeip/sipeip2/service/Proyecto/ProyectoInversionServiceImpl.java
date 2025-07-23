@@ -1,7 +1,11 @@
 package snp.sipeip.sipeip2.service.Proyecto;
 
 import lombok.RequiredArgsConstructor;
+
+// import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+// import snp.sipeip.sipeip2.dto.ReporteProyectoDTO;
 import snp.sipeip.sipeip2.model.Proyecto.ProyectoInversion;
 import snp.sipeip.sipeip2.repository.Proyecto.ProyectoInversionRepository;
 
@@ -39,4 +43,11 @@ public class ProyectoInversionServiceImpl implements ProyectoInversionService {
     public void eliminar(Long id) {
         proyectoRepository.deleteById(id);
     }
+    // @Autowired
+    // private ProyectoInversionRepository proyectoInversionRepository;
+
+    // @Override
+    // public List<ReporteProyectoDTO> obtenerReporteProyectos(Long entidadId, String estado, Long responsableId) {
+    //     return proyectoInversionRepository.obtenerReporteProyectos(entidadId, estado, responsableId);
+    // }
 }

@@ -28,6 +28,8 @@ import FormActividadOperativa from "./pages/actividadOperativa/FormActividadOper
 import FormObjetivoEstrategico from "./pages/objetivos/FormObjetivoEstrategico.jsx";
 import AuthProvider from "./components/AuthProvider.jsx";
 import RolProtegido from "./components/RolProtegido.jsx";
+import ReporteProyectos from "./pages/reportes/ReporteProyectos.jsx";
+import ReporteUsuarios from "./pages/reportes/ReporteUsuarios.jsx";
 import Login from "./components/Login.jsx";
 
 
@@ -39,12 +41,11 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route element={<DashboardLayout />}>
             <Route path="/" element={<Home />} />
-
             <Route path="/usuarios" element={
               <RolProtegido rolRequerido={["Admin"]}><ListaUsuarios /></RolProtegido>
             } />
             <Route path="/usuarios/nuevo" element={
-              <RolProtegido rolRequerido={["Admin", "Técnico de Planificación","Usuario Externo","Revisor Institucional","Autoridad Validante","Auditor"]}><FormUsuario /></RolProtegido>
+              <RolProtegido rolRequerido={["Admin"]}><FormUsuario /></RolProtegido>
             } />
             <Route path="/usuarios/editar/:id" element={
               <RolProtegido rolRequerido={["Admin"]}><FormUsuario /></RolProtegido>
@@ -60,7 +61,7 @@ function App() {
             } />
 
             <Route path="/entidades" element={
-              <RolProtegido rolRequerido={["Admin", "Técnico de Planificación"]}><ListaEntidades /></RolProtegido>
+              <RolProtegido rolRequerido={["Admin", "Tecnico de Planificacion"]}><ListaEntidades /></RolProtegido>
             } />
             <Route path="/entidades/nuevo" element={
               <RolProtegido rolRequerido={["Admin"]}><FormEntidad /></RolProtegido>
@@ -70,7 +71,7 @@ function App() {
             } />
 
             <Route path="/unidades" element={
-              <RolProtegido rolRequerido={["Admin", "Técnico de Planificación"]}><ListaUnidades /></RolProtegido>
+              <RolProtegido rolRequerido={["Admin", "Tecnico de Planificacion"]}><ListaUnidades /></RolProtegido>
             } />
             <Route path="/unidades/nueva" element={
               <RolProtegido rolRequerido={["Admin"]}><FormUnidad /></RolProtegido>
@@ -80,87 +81,88 @@ function App() {
             } />
 
             <Route path="/planes" element={
-              <RolProtegido rolRequerido={["Admin", "Técnico de Planificación", "Usuario Externo", "Revisor Institucional", "Autoridad Validante"]}><ListaPlanes /></RolProtegido>
+              <RolProtegido rolRequerido={["Admin", "Tecnico de Planificacion", "Usuario Externo", "Revisor Institucional", "Autoridad Validante"]}><ListaPlanes /></RolProtegido>
             } />
             <Route path="/planes/nuevo" element={
-              <RolProtegido rolRequerido={["Admin", "Técnico de Planificación", "Usuario Externo"]}><FormPlan /></RolProtegido>
+              <RolProtegido rolRequerido={["Admin", "Tecnico de Planificacion", "Usuario Externo"]}><FormPlan /></RolProtegido>
             } />
             <Route path="/planes/editar/:id" element={
-              <RolProtegido rolRequerido={["Admin", "Técnico de Planificación", "Usuario Externo"]}><FormPlan /></RolProtegido>
+              <RolProtegido rolRequerido={["Admin", "Tecnico de Planificacion", "Usuario Externo"]}><FormPlan /></RolProtegido>
             } />
 
             <Route path="/programas" element={
-              <RolProtegido rolRequerido={["Admin", "Técnico de Planificación"]}><ListaProgramas /></RolProtegido>
+              <RolProtegido rolRequerido={["Admin", "Tecnico de Planificacion"]}><ListaProgramas /></RolProtegido>
             } />
             <Route path="/programas/nuevo" element={
-              <RolProtegido rolRequerido={["Admin", "Técnico de Planificación"]}><FormPrograma /></RolProtegido>
+              <RolProtegido rolRequerido={["Admin", "Tecnico de Planificacion"]}><FormPrograma /></RolProtegido>
             } />
             <Route path="/programas/editar/:id" element={
-              <RolProtegido rolRequerido={["Admin", "Técnico de Planificación"]}><FormPrograma /></RolProtegido>
+              <RolProtegido rolRequerido={["Admin", "Tecnico de Planificacion"]}><FormPrograma /></RolProtegido>
             } />
 
             <Route path="/metas" element={
-              <RolProtegido rolRequerido={["Admin", "Técnico de Planificación", "Usuario Externo"]}><ListaMetas /></RolProtegido>
+              <RolProtegido rolRequerido={["Admin", "Tecnico de Planificacion", "Usuario Externo"]}><ListaMetas /></RolProtegido>
             } />
             <Route path="/metas/nueva" element={
-              <RolProtegido rolRequerido={["Admin", "Técnico de Planificación", "Usuario Externo"]}><FormMeta /></RolProtegido>
+              <RolProtegido rolRequerido={["Admin", "Tecnico de Planificacion", "Usuario Externo"]}><FormMeta /></RolProtegido>
             } />
             <Route path="/metas/editar/:id" element={
-              <RolProtegido rolRequerido={["Admin", "Técnico de Planificación", "Usuario Externo"]}><FormMeta /></RolProtegido>
+              <RolProtegido rolRequerido={["Admin", "Tecnico de Planificacion", "Usuario Externo"]}><FormMeta /></RolProtegido>
             } />
 
             <Route path="/presupuesto" element={
-              <RolProtegido rolRequerido={["Admin", "Técnico de Planificación", "Auditor", "Usuario Externo"]}><ListaPresupuesto /></RolProtegido>
+              <RolProtegido rolRequerido={["Admin", "Tecnico de Planificacion", "Auditor", "Usuario Externo"]}><ListaPresupuesto /></RolProtegido>
             } />
             <Route path="/presupuesto/nuevo" element={
-              <RolProtegido rolRequerido={["Admin", "Técnico de Planificación"]}><FormPresupuesto /></RolProtegido>
+              <RolProtegido rolRequerido={["Admin", "Tecnico de Planificacion"]}><FormPresupuesto /></RolProtegido>
             } />
             <Route path="/presupuesto/editar/:id" element={
-              <RolProtegido rolRequerido={["Admin", "Técnico de Planificación"]}><FormPresupuesto /></RolProtegido>
+              <RolProtegido rolRequerido={["Admin", "Tecnico de Planificacion"]}><FormPresupuesto /></RolProtegido>
             } />
 
             <Route path="/proyectos" element={
-              <RolProtegido rolRequerido={["Admin", "Técnico de Planificación", "Usuario Externo"]}><ListaProyectos /></RolProtegido>
+              <RolProtegido rolRequerido={["Admin", "Tecnico de Planificacion", "Usuario Externo"]}><ListaProyectos /></RolProtegido>
             } />
             <Route path="/proyectos/nuevo" element={
-              <RolProtegido rolRequerido={["Admin", "Técnico de Planificación"]}><FormProyecto /></RolProtegido>
+              <RolProtegido rolRequerido={["Admin", "Tecnico de Planificacion"]}><FormProyecto /></RolProtegido>
             } />
             <Route path="/proyectos/editar/:id" element={
-              <RolProtegido rolRequerido={["Admin", "Técnico de Planificación"]}><FormProyecto /></RolProtegido>
+              <RolProtegido rolRequerido={["Admin", "Tecnico de Planificacion"]}><FormProyecto /></RolProtegido>
             } />
 
             <Route path="/objetivos" element={
-              <RolProtegido rolRequerido={["Admin", "Técnico de Planificación", "Usuario Externo"]}><VistaObjetivos /></RolProtegido>
+              <RolProtegido rolRequerido={["Admin", "Tecnico de Planificacion", "Usuario Externo"]}><VistaObjetivos /></RolProtegido>
             } />
             <Route path="/objetivos/pnd/nuevo" element={
-              <RolProtegido rolRequerido={["Admin", "Técnico de Planificación"]}><FormObjetivoPND /></RolProtegido>
+              <RolProtegido rolRequerido={["Admin", "Tecnico de Planificacion"]}><FormObjetivoPND /></RolProtegido>
             } />
             <Route path="/objetivos/pnd/editar/:id" element={
-              <RolProtegido rolRequerido={["Admin", "Técnico de Planificación"]}><FormObjetivoPND /></RolProtegido>
+              <RolProtegido rolRequerido={["Admin", "Tecnico de Planificacion"]}><FormObjetivoPND /></RolProtegido>
             } />
             <Route path="/objetivos/ods/nuevo" element={
-              <RolProtegido rolRequerido={["Admin", "Técnico de Planificación"]}><FormObjetivoODS /></RolProtegido>
+              <RolProtegido rolRequerido={["Admin", "Tecnico de Planificacion"]}><FormObjetivoODS /></RolProtegido>
             } />
             <Route path="/objetivos/ods/editar/:id" element={
-              <RolProtegido rolRequerido={["Admin", "Técnico de Planificación"]}><FormObjetivoODS /></RolProtegido>
+              <RolProtegido rolRequerido={["Admin", "Tecnico de Planificacion"]}><FormObjetivoODS /></RolProtegido>
             } />
             <Route path="/objetivos/estrategicos/nuevo" element={
-              <RolProtegido rolRequerido={["Admin", "Técnico de Planificación"]}><FormObjetivoEstrategico /></RolProtegido>
+              <RolProtegido rolRequerido={["Admin", "Tecnico de Planificacion"]}><FormObjetivoEstrategico /></RolProtegido>
             } />
             <Route path="/objetivos/estrategicos/editar/:id" element={
-              <RolProtegido rolRequerido={["Admin", "Técnico de Planificación"]}><FormObjetivoEstrategico /></RolProtegido>
+              <RolProtegido rolRequerido={["Admin", "Tecnico de Planificacion"]}><FormObjetivoEstrategico /></RolProtegido>
             } />
 
             <Route path="/actividades" element={
-              <RolProtegido rolRequerido={["Admin", "Técnico de Planificación", "Usuario Externo"]}><ListaActividadOperativa /></RolProtegido>
+              <RolProtegido rolRequerido={["Admin", "Tecnico de Planificacion", "Usuario Externo"]}><ListaActividadOperativa /></RolProtegido>
             } />
             <Route path="/actividades/nueva" element={
-              <RolProtegido rolRequerido={["Admin", "Técnico de Planificación", "Usuario Externo"]}><FormActividadOperativa /></RolProtegido>
+              <RolProtegido rolRequerido={["Admin", "Tecnico de Planificacion", "Usuario Externo"]}><FormActividadOperativa /></RolProtegido>
             } />
             <Route path="/actividades/editar/:id" element={
-              <RolProtegido rolRequerido={["Admin", "Técnico de Planificación", "Usuario Externo"]}><FormActividadOperativa /></RolProtegido>
+              <RolProtegido rolRequerido={["Admin", "Tecnico de Planificacion", "Usuario Externo"]}><FormActividadOperativa /></RolProtegido>
             } />
-
+            <Route path="/reporte-proyectos" element={<ReporteProyectos />} />
+            <Route path="/reporte-usuarios" element={<ReporteUsuarios />} />
           </Route>
         </Routes>
       </Router>

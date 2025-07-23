@@ -1,4 +1,3 @@
-// src/components/Login.jsx
 import React, { useState, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -21,7 +20,6 @@ const Login = () => {
       });
       localStorage.setItem("token", res.data.token);
 
-      // Decodificar el JWT para extraer el correo y el rol
       const tokenPayload = JSON.parse(atob(res.data.token.split('.')[1]));
       setUsuario({ correo: tokenPayload.sub, rol: tokenPayload.rol });
       navigate("/");

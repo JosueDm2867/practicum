@@ -1,7 +1,6 @@
 package snp.sipeip.sipeip2.service.Entidad;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import snp.sipeip.sipeip2.model.Entidad.Entidad;
@@ -14,8 +13,12 @@ import java.util.Optional;
 @Service
 public class EntidadServiceImpl implements EntidadService {
 
-    @Autowired
-    private EntidadRepository entidadRepository;
+    
+    private final EntidadRepository entidadRepository;
+
+    public EntidadServiceImpl(EntidadRepository entidadRepository) {
+        this.entidadRepository = entidadRepository;
+    }
 
     @Override
     public List<Entidad> listarTodas() {

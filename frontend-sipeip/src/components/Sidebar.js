@@ -6,6 +6,7 @@ const Sidebar = () => {
   const [openAcceso, setOpenAcceso] = useState(false);
   const [openEstrategica, setOpenEstrategica] = useState(false);
   const [openProyectos, setOpenProyectos] = useState(false);
+  const [openReportes, setOpenReportes] = useState(false);
 
   return (
     <aside className="bg-gray-800 text-white w-64 min-h-screen p-4">
@@ -71,6 +72,24 @@ const Sidebar = () => {
               <Link to="/actividades" className="block hover:bg-gray-700 p-2 rounded">Actividades Operativas</Link>
               <Link to="/proyectos" className="block hover:bg-gray-700 p-2 rounded">Proyectos de Inversión</Link>
               <Link to="/presupuesto" className="block hover:bg-gray-700 p-2 rounded">Presupuesto</Link>
+            </div>
+          )}
+        </div>
+        <div>
+          <button
+            onClick={() => setOpenReportes(!openReportes)}
+            className="w-full text-left font-semibold text-gray-300 hover:text-white"
+          >
+            Reportes
+          </button>
+          {openReportes && (
+            <div className="pl-4 mt-2 space-y-2">
+              <Link to="/reporte-proyectos" className="block hover:bg-gray-700 p-2 rounded">
+                Reporte de Proyectos
+              </Link>
+              <Link to="/reporte-usuarios" className="block hover:bg-gray-700 p-2 rounded">
+                Reporte de Usuarios
+              </Link>
             </div>
           )}
         </div>
