@@ -43,11 +43,4 @@ public class ProyectoInversionServiceImpl implements ProyectoInversionService {
     public void eliminar(Long id) {
         proyectoRepository.deleteById(id);
     }
-    // @Autowired
-    // private ProyectoInversionRepository proyectoInversionRepository;
-
-    // @Override
-    // public List<ReporteProyectoDTO> obtenerReporteProyectos(Long entidadId, String estado, Long responsableId) {
-    //     return proyectoInversionRepository.obtenerReporteProyectos(entidadId, estado, responsableId);
-    // }
 }

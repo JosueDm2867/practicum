@@ -28,7 +28,6 @@ import ListaODS from "../pages/objetivos/ListaODS";
 import FormODS from "../pages/objetivos/FormODS";
 import ListaObjetivosEstrategicos from "../pages/objetivos/ListaObjetivosEstrategicos";
 import FormObjetivoEstrategico from "../pages/objetivos/FormObjetivoEstrategico";
-import ReporteProyectos from "../pages/reportes/ReporteProyectos";
 import ReporteUsuarios from "../pages/reportes/ReporteUsuarios";
 import Login from "../components/Login";
 
@@ -78,7 +77,6 @@ const AppRouter = () => {
           <Route path="/objetivos/estrategicos" element={<ListaObjetivosEstrategicos />} />
           <Route path="/objetivos/estrategicos/nuevo" element={<FormObjetivoEstrategico />} />
           <Route path="/objetivos/estrategicos/editar/:id" element={<FormObjetivoEstrategico />} />
-          <Route path="/reporte-proyectos" element={<ReporteProyectos />} />
           <Route path="/reporte-usuarios" element={<ReporteUsuarios />} />
         </Routes>
       </DashboardLayout>

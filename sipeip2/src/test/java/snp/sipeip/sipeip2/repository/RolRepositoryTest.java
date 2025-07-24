@@ -1,4 +1,4 @@
-package snp.sipeip.sipeip2;
+package snp.sipeip.sipeip2.repository;
 
 
 import org.junit.jupiter.api.Test;

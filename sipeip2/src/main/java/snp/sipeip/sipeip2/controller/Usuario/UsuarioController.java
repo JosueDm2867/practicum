@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import snp.sipeip.sipeip2.dto.ReporteUsuarioDTO;
 import snp.sipeip.sipeip2.model.Usuario.Usuario;
 import snp.sipeip.sipeip2.service.Usuario.UsuarioService;
 
@@ -61,11 +60,6 @@ public class UsuarioController {
             throw new RuntimeException("Usuario no encontrado");
         }
     }
-    @GetMapping("/reporte")
-    public ResponseEntity<List<ReporteUsuarioDTO>> reporteUsuariosPorRolYEstado() {
-        return ResponseEntity.ok(usuarioService.obtenerReporteUsuariosPorRolYEstado());
-    }
-
-
+   
 
 }

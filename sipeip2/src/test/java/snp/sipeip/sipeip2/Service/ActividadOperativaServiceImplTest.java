@@ -1,4 +1,4 @@
-package snp.sipeip.sipeip2;
+package snp.sipeip.sipeip2.Service;
 
 
 import org.junit.jupiter.api.BeforeEach;

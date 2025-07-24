@@ -84,9 +84,7 @@ const Sidebar = () => {
           </button>
           {openReportes && (
             <div className="pl-4 mt-2 space-y-2">
-              <Link to="/reporte-proyectos" className="block hover:bg-gray-700 p-2 rounded">
-                Reporte de Proyectos
-              </Link>
+              
               <Link to="/reporte-usuarios" className="block hover:bg-gray-700 p-2 rounded">
                 Reporte de Usuarios
               </Link>

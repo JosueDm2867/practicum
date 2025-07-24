@@ -1,4 +1,4 @@
-package snp.sipeip.sipeip2;
+package snp.sipeip.sipeip2.Service;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,7 +21,7 @@ class EntidadServiceImplTest {
     @BeforeEach
     void setUp() {
         repository = mock(EntidadRepository.class);
-        service = new EntidadServiceImpl(repository); // Usamos el constructor
+        service = new EntidadServiceImpl(repository); 
     }
 
     @Test

@@ -1,4 +1,4 @@
-package snp.sipeip.sipeip2;
+package snp.sipeip.sipeip2.Service;
 
 
 import org.junit.jupiter.api.BeforeEach;
@@ -55,7 +55,7 @@ class UnidadOrganizacionalServiceImplTest {
     void testGuardarNuevo() {
         UnidadOrganizacional unidad = new UnidadOrganizacional();
         unidad.setNombre("Unidad A");
-        unidad.setIdUnidadOrganizacional(null); // Simula creación nueva
+        unidad.setIdUnidadOrganizacional(null); 
 
         when(repository.save(any(UnidadOrganizacional.class))).thenAnswer(invocation -> invocation.getArgument(0));
 

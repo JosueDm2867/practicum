@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import snp.sipeip.sipeip2.model.Usuario.Usuario;
 import snp.sipeip.sipeip2.repository.Usuario.UsuarioRepository;
-import snp.sipeip.sipeip2.dto.ReporteUsuarioDTO;
 
 import java.util.List;
 
@@ -35,9 +34,5 @@ public class UsuarioServiceImpl implements UsuarioService {
     public void eliminar(Long id) {
         usuarioRepository.deleteById(id);
     }
-    @Override
-    public List<ReporteUsuarioDTO> obtenerReporteUsuariosPorRolYEstado() {
-        return usuarioRepository.reporteUsuariosPorRolYEstado();
-    }
-
+   
 }

@@ -28,7 +28,6 @@ import FormActividadOperativa from "./pages/actividadOperativa/FormActividadOper
 import FormObjetivoEstrategico from "./pages/objetivos/FormObjetivoEstrategico.jsx";
 import AuthProvider from "./components/AuthProvider.jsx";
 import RolProtegido from "./components/RolProtegido.jsx";
-import ReporteProyectos from "./pages/reportes/ReporteProyectos.jsx";
 import ReporteUsuarios from "./pages/reportes/ReporteUsuarios.jsx";
 import Login from "./components/Login.jsx";
 
@@ -161,7 +160,6 @@ function App() {
             <Route path="/actividades/editar/:id" element={
               <RolProtegido rolRequerido={["Admin", "Tecnico de Planificacion", "Usuario Externo"]}><FormActividadOperativa /></RolProtegido>
             } />
-            <Route path="/reporte-proyectos" element={<ReporteProyectos />} />
             <Route path="/reporte-usuarios" element={<ReporteUsuarios />} />
           </Route>
         </Routes>
